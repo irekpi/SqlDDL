@@ -1,0 +1,13 @@
+version: "3.9"
+services:
+  api:
+    container_name: sql_parse
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - '8004:8000'
+    volumes:
+      - ./:/app
+    restart: always
+    command: poetry run uvicorn app.main:app --host 0.0.0.0 --reload
